@@ -1,0 +1,4 @@
+login anonymous
+force_install_dir /7d2d
+app_update 294420 validate
+quit

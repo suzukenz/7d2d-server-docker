@@ -13,4 +13,4 @@ while [ -z "$(ls -A "$SAVE_DIR")" ]; do
 done
 
 >&2 echo "Save directory is up - executing command"
-exec "$cmd"
+exec $cmd

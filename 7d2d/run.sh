@@ -1,13 +1,22 @@
 #!/bin/bash
 usage_exit() {
-    echo "Usage: $0 [-u]" 1>&2
+    echo "Usage: $0 [--no-update]" 1>&2
     exit 1
 }
 
-while getopts uh OPT
+FLAG_UPDATE=true
+while getopts "h-:" OPT
 do
     case $OPT in
-        u)  FLAG_UPDATE=1
+        -)  
+            case "${OPTARG}" in
+                no-update)
+                    FLAG_UPDATE=false
+                    ;;
+                help)
+                    usage_exit
+                    ;;
+            esac
             ;;
         h)  usage_exit
             ;;
@@ -17,7 +26,7 @@ do
 done
 shift $((OPTIND - 1))
 
-if [ "$FLAG_UPDATE" ] || [ ! -e "$APP_ROOT/startserver.sh" ] ; then
+if [ "$FLAG_UPDATE" = true ] || [ ! -e "$APP_ROOT/startserver.sh" ] ; then
     echo "Updating 7D2D files."
     ./update.sh
 fi

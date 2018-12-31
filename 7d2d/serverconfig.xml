@@ -84,6 +84,7 @@
   <property name="MaxUncoveredMapChunksPerPlayer"	value="131072"/>	<!-- Override how many chunks can be uncovered on the ingame map by each player. Resulting max map file size limit per player is (x * 512 Bytes), uncovered area is (x * 256 m²). Default 131072 means max 32 km² can be uncovered at any time -->
   <property name="BedrollDeadZoneSize"				value="15"/>		<!-- Size of bedroll deadzone, no zombies will spawn inside this area, and any cleared sleeper volumes that touch a bedroll deadzone will not spawn after they've been cleared. -->
   
+  <!-- !! This setting depends on other scripts and Dockerfiles. Please change carefully. !!  -->
   <property name="SaveGameFolder"      value="/7d2d/Save" />	<!-- use this to override the default save game path -->
 
   <property name="ServerLoginConfirmationText" value="" /> <!-- If set the user will see the message during joining the server and has to confirm it before continuing -->

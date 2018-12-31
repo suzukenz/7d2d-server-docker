@@ -43,6 +43,9 @@ COPY install.txt install.txt
 # User and group are hard-coded due to Docker's specification...
 COPY --chown=steam:steam serverconfig.xml serverconfig.xml
 
+# For control startup order on running by compose
+COPY wait-for-save.sh wait-for-save.sh
+
 # Change the ports according to the ones set in your arkmanager.cfg file.
 EXPOSE 26900/TCP 26900-26903/udp
 

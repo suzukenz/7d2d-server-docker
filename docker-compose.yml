@@ -1,0 +1,21 @@
+version: "3"
+services:
+  7d2d:
+    build: ./7d2d
+    image: suzukenz/7d2d
+    ports:
+      - "26900:26900/tcp"
+      - "26900-26903:26900-26903/udp"
+    volumes:
+      - /Users/kentony/7d2d/:/7d2d
+    # Wait for save directory is to be prepared by gcs-backup container.
+    entrypoint: ["./wait-for-save.sh", "--", "./run.sh"]
+  gcs-backup:
+    build: ./gcs-bkup
+    image: suzukenz/gcs-bkup
+    # GCloud settings are not require on Google Cloud Environment.
+    # environment:
+    #   GCLOUD_CONFIG_DIR: /config/mygcloud
+    volumes:
+      # - /Users/kentony/.config/gcloud:/config/mygcloud
+      - /Users/kentony/7d2d/:/7d2d

@@ -8,8 +8,7 @@ services:
       - "26900-26903:26900-26903/udp"
     volumes:
       - gamedata:/7d2d
-    # Wait for save directory is to be prepared by gcs-backup container.
-    entrypoint: ["./wait-for-save.sh", "--", "./run.sh"]
+    entrypoint: ["./wait-for-save.sh", "--", "./run.sh", "--update-config"]
     # With no-update option, startup will be faster.
     # entrypoint: ["./wait-for-save.sh", "--", "./run.sh", "--update-config", "--no-update"]
   gcs-backup:

@@ -1,4 +1,5 @@
 #!/bin/bash
+# Wait for save directory is to be prepared by other container.
 set -e
 
 SAVE_DIR=$APP_ROOT/Save

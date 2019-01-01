@@ -8,16 +8,18 @@ services:
       - "26900-26903:26900-26903/udp"
     volumes:
       - gamedata:/7d2d
-    # Wait for save directory is to be prepared by gcs-backup container.
-    entrypoint: ["./wait-for-save.sh", "--", "./run.sh"]
+    entrypoint: ["./wait-for-save.sh", "--", "./run.sh", "--update-config"]
     # With no-update option, startup will be faster.
-    # entrypoint: ["./wait-for-save.sh", "--", "./run.sh", "--no-update"]
+    # entrypoint: ["./wait-for-save.sh", "--", "./run.sh", "--update-config", "--no-update"]
   gcs-backup:
     build: ./gcs-bkup
     image: suzukenz/gcs-bkup
-    # GCloud settings are not require on Google Cloud Environment.
-    # environment:
-    #   CLOUDSDK_CONFIG: /config/mygcloud
+    environment:
+      # Replace it with your GCS Bucket.
+      GCS_SAVE_URL: gs://seven-days-2d/save
+      GCS_LOGS_URL: gs://seven-days-2d/logs
+      # GCloud settings are not require on Google Cloud Environment.
+      # CLOUDSDK_CONFIG: /config/mygcloud
     volumes:
       # GCloud settings are not require on Google Cloud Environment.
       # - /Users/kentony/.config/gcloud:/config/mygcloud

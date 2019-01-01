@@ -7,8 +7,7 @@ services:
       - "26900:26900/tcp"
       - "26900-26903:26900-26903/udp"
     volumes:
-      # (1) Set your 7d2d directory on the host.
-      - /Users/kentony/7d2d/:/7d2d
+      - gamedata:/7d2d
     # Wait for save directory is to be prepared by gcs-backup container.
     entrypoint: ["./wait-for-save.sh", "--", "./run.sh"]
     # With no-update option, startup will be faster.
@@ -18,8 +17,10 @@ services:
     image: suzukenz/gcs-bkup
     # GCloud settings are not require on Google Cloud Environment.
     # environment:
-    #   GCLOUD_CONFIG_DIR: /config/mygcloud
+    #   CLOUDSDK_CONFIG: /config/mygcloud
     volumes:
+      # GCloud settings are not require on Google Cloud Environment.
       # - /Users/kentony/.config/gcloud:/config/mygcloud
-      # (2) Set your 7d2d directory on the host.
-      - /Users/kentony/7d2d/:/7d2d
+      - gamedata:/7d2d
+volumes:
+  gamedata:

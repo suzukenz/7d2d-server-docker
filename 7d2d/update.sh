@@ -1,3 +1,2 @@
 #!/bin/sh
-cd "$STEAMCMD_ROOT" || exit
-./steamcmd.sh +runscript "$HOME/install.txt"
+"$STEAMCMD_ROOT/steamcmd.sh" +runscript "$HOME/install.txt"

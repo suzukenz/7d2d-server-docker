@@ -33,7 +33,7 @@ COPY run.sh run.sh
 COPY stop.sh stop.sh
 COPY update.sh update.sh
 COPY install.txt install.txt
-COPY serverconfig.xml serverconfig.xml
+COPY serverconfig-default.xml serverconfig-default.xml
 
 # For control startup order on running by compose
 COPY wait-for-save.sh wait-for-save.sh

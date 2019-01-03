@@ -38,7 +38,7 @@ COPY serverconfig-default.xml serverconfig-default.xml
 # For control startup order on running by compose
 COPY wait-for-save.sh wait-for-save.sh
 
-# Change the ports according to the ones set in your arkmanager.cfg file.
+# Change the ports according to the ones set in your serverconfig.xml file.
 EXPOSE 26900/TCP 26900-26903/udp
 
 ENTRYPOINT ["./run.sh"]

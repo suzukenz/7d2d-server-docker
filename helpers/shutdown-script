@@ -1,0 +1,2 @@
+#! /bin/bash
+sudo docker-compose -f /home/xkenji_suzuki/7d2d-server-docker/docker-compose.yml down
